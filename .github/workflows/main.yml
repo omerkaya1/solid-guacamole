@@ -18,14 +18,11 @@ jobs:
         with:
           go-version: 1.17
 
-      - name: Build Mac
-        run: GOARCH=arm64 GOOS=darvin go build -ldflags "-s -w -extldflags" -o /app/solid-gaucamole .
-
       - name: Build Linux
-        run: GOARCH=arm64 GOOS=linux go build -ldflags "-s -w -extldflags" -o /app/solid-gaucamole-linux .
+        run: GOARCH=arm64 GOOS=linux go build -ldflags "-s -w -extldflags" -o solid-gaucamole-linux .
 
       - name: Archive code coverage results
         uses: actions/upload-artifact@v3
         with:
           name: binaries
-          path: /app/*
+          path: solid-gaucamole-linux
